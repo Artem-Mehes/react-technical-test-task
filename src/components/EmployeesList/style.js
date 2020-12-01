@@ -3,20 +3,20 @@ import styled from 'styled-components';
 export const StyledEmployeesList = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    padding: 0 1rem;
+    padding-left: 1rem;
 `;
 
 export const EmployeesColumn = styled.li`
-    margin-bottom: 2rem;
-    min-width: 20%;
+    width: 20%;
     background-color: #fff;
     border-radius: 17px;
     padding: 1rem 1.5rem;
-    margin-right: 3rem;
+    min-width: 196px;
+    margin: 0 1.3rem 2rem;
 `;
 
 export const Letter = styled.h3`
     margin-bottom: 1rem;
     font-size: 2rem;
-    color: #177fff;
+    color: ${({ theme }) => theme.colors.accentColor};
 `;

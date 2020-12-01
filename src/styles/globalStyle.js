@@ -3,8 +3,9 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
     html {
         box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
+        font-family: ${({ theme }) => theme.font};
         letter-spacing: 1px;
+        color: ${({ theme }) => theme.colors.textColor};
     }
 
     *,
@@ -13,10 +14,6 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: inherit;
         margin: 0;
         padding: 0;
-    }
-
-    h1 {
-        margin: 2rem 0;
     }
 
     h1, h2 {

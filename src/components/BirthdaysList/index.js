@@ -1,6 +1,12 @@
-import { Month, BirthdaysItems, StyledBirthdaysList, NoEmployees } from './style';
+import {
+	Month,
+	BirthdaysItems,
+	StyledBirthdaysList,
+	NoEmployees,
+} from './style';
 import { useSelector } from 'react-redux';
 import BirthdaysItem from '../BirthdaysItem';
+import { v4 as uuidv4 } from 'uuid';
 
 const BirthdaysList = () => {
 	const selectedEmployees = useSelector((state) => state.selected);
@@ -12,7 +18,7 @@ const BirthdaysList = () => {
 			{birthdayMonths.length > 0 ? (
 				<>
 					{birthdayMonths.map((month) => (
-						<li key={month}>
+						<li key={uuidv4()}>
 							<Month>{month}</Month>
 
 							<BirthdaysItems>

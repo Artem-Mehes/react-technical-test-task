@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledEmployeesItem } from './style';
+import { StyledEmployeesItem, Checkbox } from './style';
 import { useDispatch } from 'react-redux';
 import addEmployeeBirthday from 'actions/addEmployeeBirthday';
 import deleteEmployeeBirthday from 'actions/deleteEmployeeBirthday';
@@ -8,6 +8,7 @@ import { memo } from 'react';
 
 const EmployeesItem = ({ employee, month }) => {
 	const dispatch = useDispatch();
+
 	const isChecked = useSelector(({ selected }) => {
 		const storeMonth = selected[month];
 
@@ -17,7 +18,7 @@ const EmployeesItem = ({ employee, month }) => {
 		);
 	});
 
-	const handleCheck = ({ target }, employee) => {
+	const handleCheck = ({ target }) => {
 		target.checked
 			? dispatch(addEmployeeBirthday(employee, month))
 			: dispatch(deleteEmployeeBirthday(employee, month));
@@ -28,9 +29,10 @@ const EmployeesItem = ({ employee, month }) => {
 	return (
 		<StyledEmployeesItem>
 			{`${lastName} ${firstName}`}
-			<input
+
+			<Checkbox
 				type="checkbox"
-				onChange={(e) => handleCheck(e, employee)}
+				onChange={handleCheck}
 				checked={isChecked}
 			/>
 		</StyledEmployeesItem>

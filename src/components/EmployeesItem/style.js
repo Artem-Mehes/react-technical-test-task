@@ -6,3 +6,7 @@ export const StyledEmployeesItem = styled.li`
     justify-content: space-between;
     margin-bottom: 0.4rem;
 `;
+
+export const Checkbox = styled.input`
+    margin-left: 0.5rem;
+`;

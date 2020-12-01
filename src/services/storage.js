@@ -6,5 +6,5 @@ export const saveToLocalStorage = (key, state) => {
 export const loadFromLocalStorage = (key) => {
 	const persistedState = localStorage.getItem(key);
 
-	return persistedState === null ? undefined : JSON.parse(persistedState);
+	return persistedState === null ? {} : JSON.parse(persistedState);
 };
