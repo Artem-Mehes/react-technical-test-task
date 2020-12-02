@@ -1,6 +1,6 @@
-const checkEmployeeReducer = (state = {}, action) => {
+const selectEmployeeReducer = (state = {}, action) => {
 	switch (action.type) {
-		case 'SELECT_EMPLOYEE': {
+		case 'CHECK_EMPLOYEE': {
 			const { month, employee } = action.payload;
 			const stateMonth = state[month];
 
@@ -8,7 +8,7 @@ const checkEmployeeReducer = (state = {}, action) => {
 				? { ...state, [month]: [...stateMonth, employee] }
 				: { ...state, [month]: [employee] };
 		}
-		case 'DELETE_EMPLOYEE': {
+		case 'UNCHECK_EMPLOYEE': {
 			const { month, employee } = action.payload;
 			const filtered = state[month].filter(
 				({ id }) => id !== employee.id
@@ -30,4 +30,4 @@ const checkEmployeeReducer = (state = {}, action) => {
 	}
 };
 
-export default checkEmployeeReducer;
+export default selectEmployeeReducer;

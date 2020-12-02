@@ -1,57 +1,51 @@
 import { useEffect, useState } from 'react';
-import 'normalize.css';
-import GlobalStyle from 'styles/globalStyle';
 import Employees from 'components/Employees';
 import Birthdays from 'components/Birthdays';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import setEmployees from 'actions/setEmployees';
 import sortByFirstLetter from 'services/sortByFirstLetter';
-import { Preloader } from './style';
-import { ThemeProvider } from 'styled-components';
-import theme from 'styles/theme';
-import { employeesUrl } from '../../constants';
+import { Preloader, ErrHeading } from './style';
+import getEmployees from 'services/getEmployees';
 
 function App() {
 	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState({ message: '', isErrorCatched: false });
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const source = axios.CancelToken.source();
 
-		const getEmployees = async () => {
-			try {
-				const response = await axios.get(employeesUrl, {
-					cancelToken: source.token,
-				});
-
-				const sortedEmployees = sortByFirstLetter(response.data);
+		getEmployees(source)
+			.then(({ data }) => {
+				const sortedEmployees = sortByFirstLetter(data);
 
 				dispatch(setEmployees(sortedEmployees));
 				setIsLoading(false);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-
-		getEmployees();
+			})
+			.catch((err) => {
+				setError({
+					message: err.message,
+					isErrorCatched: true,
+				});
+			});
 
 		return () => source.cancel();
-	}, [dispatch]);
+    }, [dispatch]);
+    
+    if (error.isErrorCatched) {
+        return <ErrHeading>{error.message}</ErrHeading>
+    }
+
+    if (isLoading) {
+        return <Preloader />
+    }
 
 	return (
-		<ThemeProvider theme={theme}>
-			<GlobalStyle />
-
-			{isLoading ? (
-				<Preloader />
-			) : (
-				<>
-					<Employees />
-					<Birthdays />
-				</>
-			)}
-		</ThemeProvider>
+        <>
+            <Employees />
+            <Birthdays />
+        </>
 	);
 }
 

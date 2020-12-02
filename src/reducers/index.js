@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import setEmployeesReducer from './setEmployeesReducer';
-import checkEmployeeReducer from './checkEmployeeReducer';
+import selectEmployeeReducer from './selectEmployeeReducer';
 
 const rootReducer = combineReducers({
     employees: setEmployeesReducer,
-    selected: checkEmployeeReducer
+    selected: selectEmployeeReducer
 });
 
 export default rootReducer;

@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyledEmployeesItem, Checkbox } from './style';
 import { useDispatch } from 'react-redux';
-import addEmployeeBirthday from 'actions/addEmployeeBirthday';
-import deleteEmployeeBirthday from 'actions/deleteEmployeeBirthday';
+import checkEmployee from 'actions/checkEmployee';
+import uncheckEmployee from 'actions/uncheckEmployee';
 import { useSelector } from 'react-redux';
 import { memo } from 'react';
+import { shape, string } from 'prop-types';
 
 const EmployeesItem = ({ employee, month }) => {
 	const dispatch = useDispatch();
@@ -20,8 +21,8 @@ const EmployeesItem = ({ employee, month }) => {
 
 	const handleCheck = ({ target }) => {
 		target.checked
-			? dispatch(addEmployeeBirthday(employee, month))
-			: dispatch(deleteEmployeeBirthday(employee, month));
+			? dispatch(checkEmployee(employee, month))
+			: dispatch(uncheckEmployee(employee, month));
 	};
 
 	const { lastName, firstName } = employee;
@@ -37,6 +38,16 @@ const EmployeesItem = ({ employee, month }) => {
 			/>
 		</StyledEmployeesItem>
 	);
+};
+
+EmployeesItem.propTypes = {
+	employee: shape({
+		id: string,
+		lastName: string,
+		firstName: string,
+		dob: string,
+	}),
+	month: string,
 };
 
 export default memo(EmployeesItem);

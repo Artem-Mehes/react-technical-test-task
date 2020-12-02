@@ -28,3 +28,8 @@ export const Preloader = styled.div`
 		animation: ${preloaderAnimation} 2s linear infinite;
 	}
 `;
+
+export const ErrHeading = styled.h1`
+    margin: 4rem auto;
+    text-decoration: underline;
+`;
