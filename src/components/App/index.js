@@ -4,13 +4,13 @@ import Birthdays from 'components/Birthdays';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import setEmployees from 'actions/setEmployees';
-import sortByFirstLetter from 'services/sortByFirstLetter';
+import alphabetSort from 'services/alphabetSort';
 import { Preloader, ErrHeading } from './style';
 import getEmployees from 'services/getEmployees';
 
 function App() {
 	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState({ message: '', isErrorCatched: false });
+	const [error, setError] = useState('');
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -18,23 +18,20 @@ function App() {
 
 		getEmployees(source)
 			.then(({ data }) => {
-				const sortedEmployees = sortByFirstLetter(data);
-
+                const sortedEmployees = alphabetSort(data);
+                
 				dispatch(setEmployees(sortedEmployees));
 				setIsLoading(false);
 			})
 			.catch((err) => {
-				setError({
-					message: err.message,
-					isErrorCatched: true,
-				});
+				setError(err.message);
 			});
 
 		return () => source.cancel();
     }, [dispatch]);
     
-    if (error.isErrorCatched) {
-        return <ErrHeading>{error.message}</ErrHeading>
+    if (error.length > 0) {
+        return <ErrHeading>{error}</ErrHeading>
     }
 
     if (isLoading) {

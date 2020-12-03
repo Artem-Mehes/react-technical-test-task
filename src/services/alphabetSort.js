@@ -1,4 +1,4 @@
-const sortByFirstLetter = (employees) => {
+const alphabetSort = (employees) => {
 	const alphabetObject = [...Array(26)].reduce(
 		(obj, _, i) => ({ ...obj, [String.fromCharCode(i + 65)]: [] }),
 		{}
@@ -11,4 +11,4 @@ const sortByFirstLetter = (employees) => {
 	return alphabetObject;
 };
 
-export default sortByFirstLetter;
+export default alphabetSort;

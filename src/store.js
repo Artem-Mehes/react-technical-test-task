@@ -6,8 +6,8 @@ const store = createStore(rootReducer, {
 	selected: loadFromLocalStorage('selected'),
 });
 
-store.subscribe(() =>
-	saveToLocalStorage('selected', store.getState().selected)
+store.subscribe(() => 
+    saveToLocalStorage('selected', store.getState().selected)
 );
 
 export default store;

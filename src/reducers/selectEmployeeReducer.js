@@ -1,15 +1,17 @@
-const selectEmployeeReducer = (state = {}, action) => {
-	switch (action.type) {
-		case 'CHECK_EMPLOYEE': {
-			const { month, employee } = action.payload;
+import { CHECK_EMPLOYEE, UNCHECK_EMPLOYEE } from 'constants/ActionTypes';
+
+const selectEmployeeReducer = (state = {}, { type, payload }) => {
+	switch (type) {
+		case CHECK_EMPLOYEE: {
+			const { month, employee } = payload;
 			const stateMonth = state[month];
 
 			return stateMonth !== undefined
 				? { ...state, [month]: [...stateMonth, employee] }
 				: { ...state, [month]: [employee] };
 		}
-		case 'UNCHECK_EMPLOYEE': {
-			const { month, employee } = action.payload;
+		case UNCHECK_EMPLOYEE: {
+			const { month, employee } = payload;
 			const filtered = state[month].filter(
 				({ id }) => id !== employee.id
 			);

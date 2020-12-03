@@ -12,3 +12,4 @@
 * Styled-Components
 * Redux
 * Axios
+* Prop-Types
