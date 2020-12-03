@@ -28,6 +28,11 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 600;
     }
 
+    button {
+        background-color: inherit;
+        border: none;
+    }
+
     #root {
         display: flex;
     }

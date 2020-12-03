@@ -42,9 +42,9 @@ const EmployeesItem = ({ employee, month }) => {
 
 EmployeesItem.propTypes = {
 	employee: shape({
-		id: string,
-		lastName: string,
-		firstName: string,
+		id: string.isRequired,
+		lastName: string.isRequired,
+		firstName: string.isRequired,
 		dob: string,
 	}),
 	month: string,

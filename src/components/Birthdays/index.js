@@ -1,18 +1,16 @@
-import {
-	BirthdaysAside,
-    Heading,
-    BirthdaysInner
-} from './style';
+import { BirthdaysAside, Heading, BirthdaysInner, Header } from './style';
 import BirthdaysList from '../BirthdaysList';
 
 const Birthdays = () => {
 	return (
 		<BirthdaysAside>
-            <BirthdaysInner>
-                <Heading>Employees Birthday</Heading>
+			<BirthdaysInner>
+				<Header>
+					<Heading>Employees Birthday</Heading>
+				</Header>
 
-                <BirthdaysList />
-            </BirthdaysInner>
+				<BirthdaysList />
+			</BirthdaysInner>
 		</BirthdaysAside>
 	);
 };

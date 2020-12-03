@@ -12,9 +12,9 @@ const BirthdaysItem = ({ employee }) => {
 BirthdaysItem.propTypes = {
 	employee: shape({
 		id: string,
-		lastName: string,
-		firstName: string,
-		dob: string,
+		lastName: string.isRequired,
+		firstName: string.isRequired,
+		dob: string.isRequired,
 	}),
 };
 

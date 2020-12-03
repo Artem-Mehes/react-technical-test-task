@@ -4,6 +4,7 @@ import {
 	SET_EMPLOYEES,
 	CHECK_EMPLOYEE,
 	UNCHECK_EMPLOYEE,
+    CLEAR_SELECTED,
 } from 'constants/ActionTypes';
 
 describe('setEmployeesReducer', () => {
@@ -87,4 +88,18 @@ describe('selectEmployeeReducer', () => {
 			[month]: [firstEmployee],
 		});
     });
+
+    it('should handle CLEAR_SELECTED', () => {
+		expect(
+			selectEmployeeReducer(
+				{
+					[month]: [firstEmployee, secondEmployee],
+				},
+				{
+					type: CLEAR_SELECTED
+				}
+			)
+		).toEqual({});
+	});
 });
+

@@ -6,13 +6,18 @@ export const BirthdaysAside = styled.aside`
 
 export const Heading = styled.h2`
     font-size: 2rem;
-    text-align: center;
 `;
 
 export const BirthdaysInner = styled.div`
     position: sticky;
     top: 0;
     padding-top: 2rem;
+    position: relative;
+`;
+
+export const Header = styled.header`
+	text-align: center;
+	border-bottom: 2px solid #000;
 `;
 
 

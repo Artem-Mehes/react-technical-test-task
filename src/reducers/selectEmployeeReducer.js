@@ -1,4 +1,8 @@
-import { CHECK_EMPLOYEE, UNCHECK_EMPLOYEE } from 'constants/ActionTypes';
+import {
+	CHECK_EMPLOYEE,
+	UNCHECK_EMPLOYEE,
+	CLEAR_SELECTED,
+} from 'constants/ActionTypes';
 
 const selectEmployeeReducer = (state = {}, { type, payload }) => {
 	switch (type) {
@@ -26,7 +30,10 @@ const selectEmployeeReducer = (state = {}, { type, payload }) => {
 
 				return withoutEmptyMonth;
 			}
-		}
+        }
+        case CLEAR_SELECTED: {
+            return {};
+        }
 		default:
 			return state;
 	}

@@ -3,39 +3,46 @@ import {
 	BirthdaysItems,
 	StyledBirthdaysList,
 	NoEmployees,
+	ClearBtn,
 } from './style';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import BirthdaysItem from '../BirthdaysItem';
 import { v4 as uuidv4 } from 'uuid';
+import clearSelected from 'actions/clearSelected';
 
 const BirthdaysList = () => {
+	const dispatch = useDispatch();
 	const selectedEmployees = useSelector((state) => state.selected);
 
 	const birthdayMonths = Object.keys(selectedEmployees);
 
-	return (
-		<StyledBirthdaysList>
-			{birthdayMonths.length > 0 ? (
-				<>
-					{birthdayMonths.map((month) => (
-						<li key={uuidv4()}>
-							<Month>{month}</Month>
+	if (birthdayMonths.length === 0) {
+		return <NoEmployees>No selected employees</NoEmployees>;
+	}
 
-							<BirthdaysItems>
-								{selectedEmployees[month].map((employee) => (
-									<BirthdaysItem
-										key={employee.id}
-										employee={employee}
-									/>
-								))}
-							</BirthdaysItems>
-						</li>
-					))}
-				</>
-			) : (
-				<NoEmployees>No selected employees</NoEmployees>
-			)}
-		</StyledBirthdaysList>
+	return (
+		<>
+			<ClearBtn onClick={() => dispatch(clearSelected())}>
+				Clear All
+			</ClearBtn>
+
+			<StyledBirthdaysList>
+				{birthdayMonths.map((month) => (
+					<li key={uuidv4()}>
+						<Month>{month}</Month>
+
+						<BirthdaysItems>
+							{selectedEmployees[month].map((employee) => (
+								<BirthdaysItem
+									key={employee.id}
+									employee={employee}
+								/>
+							))}
+						</BirthdaysItems>
+					</li>
+				))}
+			</StyledBirthdaysList>
+		</>
 	);
 };
 
