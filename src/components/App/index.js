@@ -3,11 +3,11 @@ import Employees from 'components/Employees';
 import Birthdays from 'components/Birthdays';
 import { useDispatch, useSelector } from 'react-redux';
 import { Preloader, ErrHeading } from './style';
-import getEmployees from 'actions/getEmployees';
+import { getEmployees, selectStatus, selectError } from 'slices/employeesSlice';
 
 function App() {
-	const error = useSelector(({ employees }) => employees.error);
-	const requestStatus = useSelector(({ employees }) => employees.status);
+	const requestStatus = useSelector(selectStatus);
+	const error = useSelector(selectError);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -16,11 +16,11 @@ function App() {
 		}
 	}, [dispatch, requestStatus]);
 
-	if (requestStatus === 'loading' || requestStatus === 'idle') {
+	if (requestStatus === 'pending' || requestStatus === 'idle') {
 		return <Preloader />;
 	}
 
-	if (requestStatus === 'failed') {
+	if (requestStatus === 'error') {
 		return <ErrHeading>{error}</ErrHeading>;
 	}
 

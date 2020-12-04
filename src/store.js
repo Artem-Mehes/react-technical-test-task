@@ -1,18 +1,24 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import employeesReducer from './slices/employeesSlice';
+import selectedEmployeesReducer from './slices/selectedEmployeesSlice';
 import { saveToLocalStorage, loadFromLocalStorage } from './services/storage';
 
-const store = createStore(
-	rootReducer,
-	{
-		selected: loadFromLocalStorage('selected'),
-	},
-	applyMiddleware(thunk)
-);
+const preloadedState = {
+	selected: loadFromLocalStorage('selected'),
+};
 
-store.subscribe(() => 
-    saveToLocalStorage('selected', store.getState().selected)
+const store = configureStore({
+	reducer: {
+		employees: employeesReducer,
+		selected: selectedEmployeesReducer,
+	},
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+	devTools: process.env.NODE_ENV !== 'production',
+	preloadedState,
+});
+
+store.subscribe(() =>
+	saveToLocalStorage('selected', store.getState().selected)
 );
 
 export default store;

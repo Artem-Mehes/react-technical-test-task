@@ -8,11 +8,14 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import BirthdaysItem from '../BirthdaysItem';
 import { v4 as uuidv4 } from 'uuid';
-import clearSelected from 'actions/clearSelected';
+import {
+	selectSelectedEmployees,
+	clearAll,
+} from 'slices/selectedEmployeesSlice';
 
 const BirthdaysList = () => {
 	const dispatch = useDispatch();
-	const selectedEmployees = useSelector(({ selected }) => selected);
+	const selectedEmployees = useSelector(selectSelectedEmployees);
 
 	const birthdayMonths = Object.keys(selectedEmployees);
 
@@ -22,9 +25,7 @@ const BirthdaysList = () => {
 
 	return (
 		<>
-			<ClearBtn onClick={() => dispatch(clearSelected())}>
-				Clear All
-			</ClearBtn>
+			<ClearBtn onClick={() => dispatch(clearAll())}>Clear All</ClearBtn>
 
 			<StyledBirthdaysList>
 				{birthdayMonths.map((month) => (
