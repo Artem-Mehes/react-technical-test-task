@@ -2,8 +2,8 @@ import React from 'react';
 import { StyledEmployeesItem, Checkbox } from './style';
 import { useDispatch } from 'react-redux';
 import {
-	checkEmployee,
-	uncheckEmployee,
+	addEmployee,
+	removeEmployee,
 	selectSelectedEmployees,
 } from 'slices/selectedEmployeesSlice';
 import { useSelector } from 'react-redux';
@@ -21,8 +21,8 @@ const EmployeesItem = ({ employee, month }) => {
 	const handleCheck = ({ target }) => {
 		dispatch(
 			target.checked
-				? checkEmployee({ employee, month })
-				: uncheckEmployee({ employee, month })
+				? addEmployee({ employee, month })
+				: removeEmployee({ employee, month })
 		);
 	};
 

@@ -4,7 +4,7 @@ const selectedEmployeesSlice = createSlice({
 	name: 'selectedEmployees',
 	initialState: {},
 	reducers: {
-		checkEmployee: (state, { payload }) => {
+		addEmployee: (state, { payload }) => {
 			const { employee, month } = payload;
 
 			if (state[month] === undefined) {
@@ -14,7 +14,7 @@ const selectedEmployeesSlice = createSlice({
 				state[month].push(employee);
 			}
 		},
-		uncheckEmployee: (state, { payload }) => {
+		removeEmployee: (state, { payload }) => {
 			const { month, employee } = payload;
 
 			const filtered = state[month].filter(
@@ -27,15 +27,15 @@ const selectedEmployeesSlice = createSlice({
 				delete state[month];
 			}
 		},
-		clearAll: () => ({}),
+		removeAllEmployees: () => ({}),
 	},
 });
 
 export const selectSelectedEmployees = (state) => state.selectedEmployees;
 
 export const {
-	checkEmployee,
-	uncheckEmployee,
-	clearAll,
+	addEmployee,
+	removeEmployee,
+	removeAllEmployees,
 } = selectedEmployeesSlice.actions;
 export default selectedEmployeesSlice.reducer;

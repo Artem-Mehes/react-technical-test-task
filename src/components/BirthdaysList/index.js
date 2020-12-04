@@ -10,7 +10,7 @@ import BirthdaysItem from '../BirthdaysItem';
 import { v4 as uuidv4 } from 'uuid';
 import {
 	selectSelectedEmployees,
-	clearAll,
+	removeAllEmployees,
 } from 'slices/selectedEmployeesSlice';
 
 const BirthdaysList = () => {
@@ -25,7 +25,9 @@ const BirthdaysList = () => {
 
 	return (
 		<>
-			<ClearBtn onClick={() => dispatch(clearAll())}>Clear All</ClearBtn>
+			<ClearBtn onClick={() => dispatch(removeAllEmployees())}>
+				Clear All
+			</ClearBtn>
 
 			<StyledBirthdaysList>
 				{birthdayMonths.map((month) => (
