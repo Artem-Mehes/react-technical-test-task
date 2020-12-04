@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
-
 const selectedEmployeesSlice = createSlice({
 	name: 'selectedEmployees',
-	initialState,
+	initialState: {},
 	reducers: {
 		checkEmployee: (state, { payload }) => {
 			const { employee, month } = payload;
@@ -29,11 +27,11 @@ const selectedEmployeesSlice = createSlice({
 				delete state[month];
 			}
 		},
-		clearAll: () => initialState,
+		clearAll: () => ({}),
 	},
 });
 
-export const selectSelectedEmployees = (state) => state.selected;
+export const selectSelectedEmployees = (state) => state.selectedEmployees;
 
 export const {
 	checkEmployee,

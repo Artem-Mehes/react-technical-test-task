@@ -1,16 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import employeesReducer from './slices/employeesSlice';
+import allEmployeesReducer from './slices/allEmployeesSlice';
 import selectedEmployeesReducer from './slices/selectedEmployeesSlice';
 import { saveToLocalStorage, loadFromLocalStorage } from './services/storage';
 
 const preloadedState = {
-	selected: loadFromLocalStorage('selected'),
+	selectedEmployees: loadFromLocalStorage('selectedEmployees'),
 };
 
 const store = configureStore({
 	reducer: {
-		employees: employeesReducer,
-		selected: selectedEmployeesReducer,
+		allEmployees: allEmployeesReducer,
+		selectedEmployees: selectedEmployeesReducer,
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 	devTools: process.env.NODE_ENV !== 'production',
@@ -18,7 +18,7 @@ const store = configureStore({
 });
 
 store.subscribe(() =>
-	saveToLocalStorage('selected', store.getState().selected)
+	saveToLocalStorage('selectedEmployees', store.getState().selectedEmployees)
 );
 
 export default store;

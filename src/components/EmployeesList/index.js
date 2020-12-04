@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import { StyledEmployeesList, EmployeesColumn, Letter } from './style';
 import { formatMonth } from 'services/date';
 import { v4 as uuidv4 } from 'uuid';
-import { selectEmployees } from 'slices/employeesSlice';
+import { selectAllEmployees } from 'slices/allEmployeesSlice';
 
 const EmployeesList = () => {
-	const employees = useSelector(selectEmployees);
+	const employees = useSelector(selectAllEmployees);
 
 	return (
 		<StyledEmployeesList>

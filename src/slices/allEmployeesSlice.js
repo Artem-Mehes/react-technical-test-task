@@ -6,7 +6,7 @@ const API_URL =
 	'https://yalantis-react-school-api.yalantis.com/api/task0/users';
 
 export const getEmployees = createAsyncThunk(
-	'employees/loadEmployees',
+	'allEmployees/getEmployees',
 	async (_, { rejectWithValue }) => {
 		try {
 			const response = await axios.get(API_URL);
@@ -18,8 +18,8 @@ export const getEmployees = createAsyncThunk(
 	}
 );
 
-const employeesSlice = createSlice({
-	name: 'employees',
+const allEmployeesSlice = createSlice({
+	name: 'allEmployees',
 	initialState: { entities: {}, loading: 'idle', error: null },
 	reducers: {},
 	extraReducers: {
@@ -43,8 +43,8 @@ const employeesSlice = createSlice({
 	},
 });
 
-export const selectStatus = (state) => state.employees.loading;
-export const selectError = (state) => state.employees.error;
-export const selectEmployees = (state) => state.employees.entities;
+export const selectStatus = (state) => state.allEmployees.loading;
+export const selectError = (state) => state.allEmployees.error;
+export const selectAllEmployees = (state) => state.allEmployees.entities;
 
-export default employeesSlice.reducer;
+export default allEmployeesSlice.reducer;

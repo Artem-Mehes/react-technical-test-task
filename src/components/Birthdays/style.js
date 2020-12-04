@@ -12,7 +12,6 @@ export const BirthdaysInner = styled.div`
     position: sticky;
     top: 0;
     padding-top: 2rem;
-    position: relative;
 `;
 
 export const Header = styled.header`

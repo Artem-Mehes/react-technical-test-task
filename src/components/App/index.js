@@ -3,7 +3,7 @@ import Employees from 'components/Employees';
 import Birthdays from 'components/Birthdays';
 import { useDispatch, useSelector } from 'react-redux';
 import { Preloader, ErrHeading } from './style';
-import { getEmployees, selectStatus, selectError } from 'slices/employeesSlice';
+import { getEmployees, selectStatus, selectError } from 'slices/allEmployeesSlice';
 
 function App() {
 	const requestStatus = useSelector(selectStatus);

@@ -1,4 +1,4 @@
-# `React-Technical-Test-Task`
+# `React Technical Test Task`
 
 [Link to the project](https://artem-mehes.github.io/react-technical-test-task/)
 
@@ -10,7 +10,6 @@
 ## Tech Stack
 * React
 * Styled-Components
-* Redux
-* Redux-Thunk
+* Redux-Toolkit
 * Axios
 * Prop-Types
