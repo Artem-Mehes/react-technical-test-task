@@ -2,7 +2,7 @@ import {
 	CHECK_EMPLOYEE,
 	UNCHECK_EMPLOYEE,
 	CLEAR_SELECTED,
-} from 'constants/ActionTypes';
+} from 'actions/types';
 
 const selectEmployeeReducer = (state = {}, { type, payload }) => {
 	switch (type) {

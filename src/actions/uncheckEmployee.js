@@ -1,4 +1,4 @@
-import { UNCHECK_EMPLOYEE } from 'constants/ActionTypes';
+import { UNCHECK_EMPLOYEE } from 'actions/types';
 
 const uncheckEmployee = (employee, month) => {
 	return {

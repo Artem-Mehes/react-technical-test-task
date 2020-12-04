@@ -20,9 +20,11 @@ const EmployeesItem = ({ employee, month }) => {
 	});
 
 	const handleCheck = ({ target }) => {
-		target.checked
-			? dispatch(checkEmployee(employee, month))
-			: dispatch(uncheckEmployee(employee, month));
+		dispatch(
+			target.checked
+				? checkEmployee(employee, month)
+				: uncheckEmployee(employee, month)
+		);
 	};
 
 	const { lastName, firstName } = employee;

@@ -6,7 +6,7 @@ import { formatMonth } from 'services/date';
 import { v4 as uuidv4 } from 'uuid';
 
 const EmployeesList = () => {
-	const employees = useSelector(({ employees }) => employees);
+	const employees = useSelector(({ employees }) => employees.data);
 
 	return (
 		<StyledEmployeesList>

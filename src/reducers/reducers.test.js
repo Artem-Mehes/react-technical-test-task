@@ -1,27 +1,21 @@
-import setEmployeesReducer from './setEmployeesReducer';
 import selectEmployeeReducer from './selectEmployeeReducer';
+import getEmployeesReducer from './getEmployeesReducer';
 import {
-	SET_EMPLOYEES,
 	CHECK_EMPLOYEE,
 	UNCHECK_EMPLOYEE,
     CLEAR_SELECTED,
-} from 'constants/ActionTypes';
+} from 'actions/types';
 
-describe('setEmployeesReducer', () => {
-	const employees = [{ lastName: 'Doe' }, { lastName: 'Smith' }];
+describe('getEmployeeReducer', () => {
+    const initialState = {
+        status: 'idle',
+        error: null,
+        data: {},
+    };
 
-	it('should return the initial state', () => {
-		expect(setEmployeesReducer(undefined, {})).toEqual([]);
-	});
-
-	it('should handle SET_EMPLOYEES', () => {
-		expect(
-			setEmployeesReducer([], {
-				type: SET_EMPLOYEES,
-				employees,
-			})
-		).toEqual(employees);
-	});
+    it('should return the initial state', () => {
+        expect(getEmployeesReducer(initialState, {})).toEqual(initialState);
+    });
 });
 
 describe('selectEmployeeReducer', () => {

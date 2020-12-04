@@ -1,4 +1,4 @@
-import { CLEAR_SELECTED } from 'constants/ActionTypes';
+import { CLEAR_SELECTED } from 'actions/types';
 
 const clearSelected = () => {
 	return {

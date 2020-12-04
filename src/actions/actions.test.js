@@ -1,13 +1,11 @@
 import checkEmployee from './checkEmployee';
 import uncheckEmployee from './uncheckEmployee';
-import setEmployees from './setEmployees';
 import clearSelected from './clearSelected';
 import {
 	CHECK_EMPLOYEE,
     CLEAR_SELECTED,
-	SET_EMPLOYEES,
 	UNCHECK_EMPLOYEE,
-} from 'constants/ActionTypes';
+} from 'actions/types';
 
 describe('actions is created correctly', () => {
 	const employee = {
@@ -33,15 +31,6 @@ describe('actions is created correctly', () => {
 
 		expect(uncheckEmployee(employee, month)).toEqual(expectedAction);
 	});
-
-	it('should create an action to set employees', () => {
-		const expectedAction = {
-			type: SET_EMPLOYEES,
-			employees,
-		};
-
-		expect(setEmployees(employees)).toEqual(expectedAction);
-    });
     
     it('should create an action to clear selected', () => {
         const expectedAction = {

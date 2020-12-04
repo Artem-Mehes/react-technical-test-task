@@ -11,5 +11,6 @@
 * React
 * Styled-Components
 * Redux
+* Redux-Thunk
 * Axios
 * Prop-Types

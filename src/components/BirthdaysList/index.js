@@ -12,7 +12,7 @@ import clearSelected from 'actions/clearSelected';
 
 const BirthdaysList = () => {
 	const dispatch = useDispatch();
-	const selectedEmployees = useSelector((state) => state.selected);
+	const selectedEmployees = useSelector(({ selected }) => selected);
 
 	const birthdayMonths = Object.keys(selectedEmployees);
 
